@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
-import { ERC20 } from "@demo-dapp-erc20/hardhat/typechain/ERC20";
-import { ERC20Faucet } from "@demo-dapp-erc20/hardhat/typechain/ERC20Faucet";
+import { ERC20 } from "@demo-erc20/hardhat/typechain/ERC20";
+import { ERC20Faucet } from "@demo-erc20/hardhat/typechain/ERC20Faucet";
 import { config } from "@/config/index";
 
 export const erc20 = new ethers.Contract(

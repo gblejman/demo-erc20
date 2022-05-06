@@ -11,7 +11,7 @@ import detectEthereumProvider from "@metamask/detect-provider";
 type TWeb3 = {
   provider: ethers.providers.Web3Provider | null;
   account: string | null;
-  network: ethers.providers.Networkish;
+  network: ethers.providers.Network | null;
   connect: () => void;
   disconnect: () => void;
 };
@@ -39,11 +39,13 @@ const useInjectedWeb3 = (): TWeb3 => {
       if (!provider) return;
 
       // fires on the wrapped provider (ie: window.ethereum) object
+      // @ts-ignore
       provider.provider.on("accountsChanged", handleAccounts);
       // fires on ethers Web3Provider object
       provider.on("network", handleNetwork);
 
       return () => {
+        // @ts-ignore
         provider.provider.off("accountsChanged", handleAccounts);
         provider.off("network", handleNetwork);
       };

@@ -1,6 +1,5 @@
 import { ethers } from "ethers";
 import { default as hardhat, ERC20, ERC20Faucet } from "@demo-erc20/hardhat";
-
 import { config } from "@/config/index";
 
 export const erc20 = new ethers.Contract(

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@demo-erc20/*": ["../packages/*"],
       "@/components/*": ["components/*"],
       "@/config/*": ["config/*"],
       "@/lib/*": ["lib/*"],

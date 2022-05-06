@@ -1,5 +1,5 @@
 {
-  "name": "@demo-dapp-erc20/hardhat",
+  "name": "@demo-erc20/hardhat",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -42,5 +42,8 @@
     "ts-node": "^10.7.0",
     "typechain": "^5.2.0",
     "typescript": "^4.6.4"
+  },
+  "exports": {
+    "./artifacts/*": "./artifacts/*"
   }
 }

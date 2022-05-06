@@ -1,3 +1,5 @@
+An all vanilla erc20 token, faucet and dapp
+
 # Folder Structure
 
 - /: workspace root

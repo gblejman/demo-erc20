@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useWeb3 } from "@/lib/useWeb3";
 import { EtherscanLink } from "@/components/EtherscanLink";
@@ -12,27 +12,27 @@ export const LogWatcher = () => {
   const [logs, setLogs] = useState<LogEnhanced[]>([]);
   const { provider } = useWeb3();
 
-  const handleLog: ethers.providers.Listener = (log: ethers.providers.Log) => {
-    // ommit if exists, sometimes listener triggers multiple times with same info
-    if (logs.find((e) => e.transactionHash === log.transactionHash)) {
-      console.log("omit log");
-      return;
-    }
+  const handleLog: ethers.providers.Listener = useCallback(
+    (log: ethers.providers.Log) => {
+      setLogs((prev) => {
+        // ommit if exists, sometimes listener triggers multiple times with same info
+        if (prev.find((e) => e.transactionHash === log.transactionHash)) {
+          return prev;
+        }
 
-    // add abi parsed info
-    setLogs((prev) => [
-      { ...log, parsed: contract.interface.parseLog(log) },
-      ...prev,
-    ]);
-  };
+        // add abi parsed info
+        return [{ ...log, parsed: contract.interface.parseLog(log) }, ...prev];
+      });
+    },
+    []
+  );
 
   useEffect(() => {
     const init = () => {
       if (!provider) return;
 
+      // if we'd like to match all event types: const filter = { address: contract.address };
       const filter = contract.filters.Transfer();
-      // if we'd like to match all event types
-      //const filter = { address: contract.address };
       provider.on(filter, handleLog);
 
       return () => {
@@ -41,7 +41,7 @@ export const LogWatcher = () => {
     };
 
     init();
-  }, [provider]);
+  }, [provider, handleLog]);
 
   return (
     <div>

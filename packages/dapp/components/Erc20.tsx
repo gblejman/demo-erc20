@@ -56,7 +56,7 @@ export const Erc20 = () => {
       const receipt = await transaction.wait();
 
       setReceipt(receipt);
-    } catch (e) {
+    } catch (e: any) {
       console.log("Tx error: ", e.message);
       alert(`Tx error: ${e.message}`);
     }

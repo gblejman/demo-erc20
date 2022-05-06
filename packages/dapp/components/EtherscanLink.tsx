@@ -25,6 +25,7 @@ export const EtherscanLink = ({
     <a
       href={`https://${network?.name}.etherscan.io/${type}/${value}`}
       target="_blank"
+      rel="noreferrer"
     >
       {children}
     </a>

@@ -33,11 +33,6 @@ const useInjectedWeb3 = (): TWeb3 => {
     init();
   }, []);
 
-  // Auto-connect
-  useEffect(() => {
-    fetchAccounts();
-  }, [provider]);
-
   // Event subscriptions
   useEffect(() => {
     const subscribe = () => {
@@ -65,15 +60,20 @@ const useInjectedWeb3 = (): TWeb3 => {
   const handleNetwork = (newNetwork, oldNetwork) => setNetwork(newNetwork);
 
   // Account fetching
-  const fetchAccounts = async () => {
+  const fetchAccounts = useCallback(async () => {
     if (!provider) return;
 
     const accounts = await provider.send("eth_requestAccounts", []);
     handleAccounts(accounts);
-  };
+  }, [provider]);
+
+  // Auto-connect
+  useEffect(() => {
+    fetchAccounts();
+  }, [provider, fetchAccounts]);
 
   // Manual Connection
-  const connect = useCallback(fetchAccounts, [provider]);
+  const connect = useCallback(fetchAccounts, [provider, fetchAccounts]);
 
   // Manual Disconnection (really doesn't disconnect from the provider, only the account info is cleared)
   const disconnect = useCallback(async () => {

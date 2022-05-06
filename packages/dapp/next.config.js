@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withTM = require("next-transpile-modules")([
-  "@demo-dapp-erc20/hardhat/artifacts/*",
-]);
+const withTM = require("next-transpile-modules")(["@demo-dapp-erc20/hardhat"]);
 
 const nextConfig = {
   // reactStrictMode: true,

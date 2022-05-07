@@ -25,10 +25,10 @@ const Home: NextPage = () => {
           }}
         >
           <Erc20 />
-          <Erc20Faucet />
+          {/* <Erc20Faucet /> */}
         </div>
 
-        <LogWatcher />
+        {/* <LogWatcher /> */}
       </main>
     </div>
   );

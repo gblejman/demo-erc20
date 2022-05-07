@@ -69,10 +69,10 @@ const useInjectedWeb3 = (): TWeb3 => {
     handleAccounts(accounts);
   }, [provider]);
 
-  // Auto-connect
-  useEffect(() => {
-    fetchAccounts();
-  }, [provider, fetchAccounts]);
+  // Auto-connect if
+  // useEffect(() => {
+  //   fetchAccounts();
+  // }, [provider, fetchAccounts]);
 
   // Manual Connection
   const connect = useCallback(fetchAccounts, [provider, fetchAccounts]);

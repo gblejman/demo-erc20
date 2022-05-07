@@ -2,7 +2,7 @@ import { useWeb3 } from "@/lib/useWeb3";
 
 type LinkType = "address" | "tx" | "block" | "token" | "ens";
 
-const types = {
+const linkTypes = {
   address: "address",
   tx: "tx",
   block: "block",
@@ -11,7 +11,7 @@ const types = {
 } as const;
 
 export const EtherscanLink = ({
-  type = types.address,
+  type = linkTypes.address,
   value = "",
   children = <span>View on Etherscan</span>,
 }: {

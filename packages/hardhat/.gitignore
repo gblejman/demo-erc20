@@ -6,5 +6,6 @@ coverage.json
 
 #Hardhat files
 cache
-typechain
+#typechain need the types to be built in dapp by vercel, after building the types are erased in build anyways
+#artifacts same
 artifacts/build-info

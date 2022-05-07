@@ -16,7 +16,7 @@ type TWeb3 = {
   disconnect: () => void;
 };
 
-const useInjectedWeb3 = (): TWeb3 => {
+const useInjectedWeb3 = ({ reloadOnChainChange = true } = {}): TWeb3 => {
   const [provider, setProvider] = useState<TWeb3["provider"]>(null);
   const [account, setAccount] = useState<TWeb3["account"]>(null);
   const [network, setNetwork] = useState<TWeb3["network"]>(null);
@@ -57,25 +57,38 @@ const useInjectedWeb3 = (): TWeb3 => {
   // Account Handling
   const handleAccounts = ([account] = []) => setAccount(account);
 
+  // Auto-reconnect, just check accounts existance (no ui dialog)
+  useEffect(() => {
+    const check = async () => {
+      if (!provider) return;
+
+      const accounts = await provider.send("eth_accounts", []);
+      handleAccounts(accounts);
+    };
+
+    check();
+  }, [provider]);
+
   // Network Handling
   // TODO: https://docs.ethers.io/v5/concepts/best-practices/#best-practices -> reload? Emit event an let user decide?
-  const handleNetwork = (newNetwork, oldNetwork) => setNetwork(newNetwork);
+  const handleNetwork = (newNetwork, oldNetwork) => {
+    if (oldNetwork && reloadOnChainChange) {
+      window.location.reload();
+    }
 
-  // Account fetching
-  const fetchAccounts = useCallback(async () => {
+    setNetwork(newNetwork);
+  };
+
+  // Account request (triggers ui dialog)
+  const requestAccounts = useCallback(async () => {
     if (!provider) return;
 
     const accounts = await provider.send("eth_requestAccounts", []);
     handleAccounts(accounts);
   }, [provider]);
 
-  // Auto-connect if
-  // useEffect(() => {
-  //   fetchAccounts();
-  // }, [provider, fetchAccounts]);
-
   // Manual Connection
-  const connect = useCallback(fetchAccounts, [provider, fetchAccounts]);
+  const connect = useCallback(requestAccounts, [provider, requestAccounts]);
 
   // Manual Disconnection (really doesn't disconnect from the provider, only the account info is cleared)
   const disconnect = useCallback(async () => {

@@ -1,7 +1,7 @@
 import { useWeb3 } from "@/lib/useWeb3";
 
 export const Nav = () => {
-  const { network, account, connect, disconnect } = useWeb3();
+  const { provider, network, account, connect, disconnect } = useWeb3();
 
   return (
     <nav
@@ -25,14 +25,12 @@ export const Nav = () => {
         </button>
       )}
 
-      {network && (
-        <div style={{ display: "flex", flexDirection: "column", padding: 10 }}>
-          Network
-          <span>Name: {network.name}</span>
-          <span>ChainId: {network.chainId}</span>
-          <span>Ens: {network.ensAddress}</span>
-        </div>
-      )}
+      <div style={{ display: "flex", flexDirection: "column", padding: 10 }}>
+        <span>Provider: {String(!!provider)}</span>
+        <span>Network Name: {network?.name ?? "None"}</span>
+        <span>Network ChainId: {network?.chainId ?? "None"}</span>
+        <span>Network Ens: {network?.ensAddress ?? "None"}</span>
+      </div>
 
       {account && <span style={{ padding: 10 }}>Account: {account}</span>}
     </nav>

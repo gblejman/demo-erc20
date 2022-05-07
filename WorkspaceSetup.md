@@ -21,7 +21,7 @@ npx create-next-app@latest --typescript
 
 ```json
 {
-  "name": "@demo-dapp-erc20/dapp",
+  "name": "@demo-erc20/dapp",
   "version": "1.0.0"
 }
 ```
@@ -34,7 +34,7 @@ Note: rm -rf .git created by nextjs scaffolding
 
 ```json
 {
-  "name": "@demo-dapp-erc20/hardhat",
+  "name": "@demo-erc20/hardhat",
   "version": "1.0.0"
 }
 ```

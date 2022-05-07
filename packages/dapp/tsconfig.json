@@ -5,7 +5,8 @@
       "@/components/*": ["components/*"],
       "@/config/*": ["config/*"],
       "@/lib/*": ["lib/*"],
-      "@/contracts/*": ["contracts/*"]
+      "@/contracts/*": ["contracts/*"],
+      "@demo-erc20/*": ["../packages/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

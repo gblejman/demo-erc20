@@ -1,14 +1,19 @@
 import { ethers } from "ethers";
-import { ERC20 } from "@demo-dapp-erc20/hardhat/typechain/ERC20";
-import { ERC20Faucet } from "@demo-dapp-erc20/hardhat/typechain/ERC20Faucet";
+import {
+  ERC20,
+  ERC20Faucet,
+  erc20Abi,
+  erc20FaucetAbi,
+} from "@demo-erc20/hardhat";
+
 import { config } from "../config";
 
 export const erc20 = new ethers.Contract(
   config.contracts.erc20.address,
-  config.contracts.erc20.abi
+  erc20Abi
 ) as ERC20;
 
 export const erc20Faucet = new ethers.Contract(
   config.contracts.erc20Faucet.address,
-  config.contracts.erc20Faucet.abi
+  erc20FaucetAbi
 ) as ERC20Faucet;

@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const withTM = require("next-transpile-modules")(["@demo-erc20/hardhat"], {
+  debug: true,
+});
+
+module.exports = withTM({
   // reactStrictMode: true,
   reactStrictMode: false,
-};
-
-module.exports = nextConfig;
+});

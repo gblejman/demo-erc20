@@ -1,7 +1,9 @@
 {
-  "name": "@demo-dapp-erc20/hardhat",
+  "name": "@demo-erc20/hardhat",
   "version": "1.0.0",
   "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
   "scripts": {
     "clean": "hardhat clean",
     "dev": "hardhat node",

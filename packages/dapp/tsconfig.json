@@ -6,7 +6,7 @@
       "@/config/*": ["config/*"],
       "@/lib/*": ["lib/*"],
       "@/contracts/*": ["contracts/*"],
-      "@demo-erc20/hardhat": ["../hardhat"]
+      "@demo-erc20/*": ["../packages/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

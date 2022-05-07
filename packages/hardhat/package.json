@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "node": "npx hardhat node",
-    "compile": "npx hardhat compile",
-    "test": "npx hardhat test",
-    "deploy:erc20:localhost": "npx hardhat run scripts/deploy-erc20.ts --network localhost",
-    "deploy:erc20:ropsten": "npx hardhat run scripts/deploy-erc20.ts --network ropsten",
-    "deploy:erc20Faucet:localhost": "npx hardhat run scripts/deploy-erc20Faucet.ts --network localhost",
-    "deploy:erc20Faucet:ropsten": "npx hardhat run scripts/deploy-erc20Faucet.ts --network ropsten"
+    "clean": "hardhat clean",
+    "dev": "hardhat node",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:erc20:localhost": "hardhat run scripts/deploy-erc20.ts --network localhost",
+    "deploy:erc20:ropsten": "hardhat run scripts/deploy-erc20.ts --network ropsten",
+    "deploy:erc20Faucet:localhost": "hardhat run scripts/deploy-erc20Faucet.ts --network localhost",
+    "deploy:erc20Faucet:ropsten": "hardhat run scripts/deploy-erc20Faucet.ts --network ropsten"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
@@ -39,7 +40,6 @@
     "prettier-plugin-solidity": "^1.0.0-beta.13",
     "solhint": "^3.3.7",
     "solidity-coverage": "^0.7.21",
-    "ts-node": "^10.7.0",
     "typechain": "^5.2.0",
     "typescript": "^4.6.4"
   }

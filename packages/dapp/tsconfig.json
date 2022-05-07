@@ -2,11 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@demo-erc20/hardhat": ["../hardhat"],
       "@/components/*": ["components/*"],
       "@/config/*": ["config/*"],
       "@/lib/*": ["lib/*"],
-      "@/contracts/*": ["contracts/*"]
+      "@/contracts/*": ["contracts/*"],
+      "@demo-erc20/hardhat": ["../hardhat"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

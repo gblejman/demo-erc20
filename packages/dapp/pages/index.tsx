@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import { Erc20 } from "../components/Erc20";
-import { Erc20Faucet } from "../components/Erc20Faucet";
-import { LogWatcher } from "../components/LogWatcher";
+import { Erc20 } from "@/components/erc20/Erc20";
+import { Erc20Faucet } from "@/components/erc20Faucet/Erc20Faucet";
+import { LogWatcher } from "@/components/LogWatcher";
 import { DefaultLayout } from "@/components/layout/DefaultLayout";
 
 const Home: NextPage = () => {

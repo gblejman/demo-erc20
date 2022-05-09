@@ -50,7 +50,6 @@ export const LogWatcher = () => {
         Faucet requests also generate a transfer from faucet to requesting
         account
       </h5>
-      <span></span>
 
       {logs.map((log) => (
         <Log key={log.transactionHash} log={log} />
@@ -76,8 +75,8 @@ const Log = ({ log }: { log: LogEnhanced }) => {
       <span>Block Number: {blockNumber}</span>
       <span>Block Hash: {blockHash}</span>
       <span>Topics:</span>
-      {topics.map((topic) => (
-        <span key={topic}>{topic}</span>
+      {topics.map((topic, idx) => (
+        <span key={idx}>{topic}</span>
       ))}
 
       <span>Event Name: {name}</span>

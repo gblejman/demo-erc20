@@ -6,7 +6,7 @@ import {
   erc20FaucetAbi,
 } from "@demo-erc20/hardhat";
 
-import { config } from "../config";
+import { config } from "@/config/index";
 
 export const erc20 = new ethers.Contract(
   config.contracts.erc20.address,

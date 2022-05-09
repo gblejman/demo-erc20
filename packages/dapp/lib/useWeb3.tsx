@@ -8,10 +8,13 @@ import {
 import { ethers } from "ethers";
 import detectEthereumProvider from "@metamask/detect-provider";
 
-type TWeb3 = {
+type TWeb3State = {
   provider: ethers.providers.Web3Provider | null;
   account: string | null;
   network: ethers.providers.Network | null;
+};
+
+type TWeb3 = TWeb3State & {
   connect: () => void;
   disconnect: () => void;
 };

@@ -7,4 +7,8 @@ export const config = {
       address: process.env.NEXT_PUBLIC_ERC20FAUCET_CONTRACT_ADDRESS || "",
     },
   },
+  deploymentChains: {
+    3: "ropsten",
+    1337: "hardhat",
+  },
 };

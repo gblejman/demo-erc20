@@ -30,6 +30,11 @@ const useInjectedWeb3 = ({ reloadOnChainChange = true } = {}): TWeb3 => {
       const injected =
         (await detectEthereumProvider()) as ethers.providers.ExternalProvider;
 
+      if (!injected) {
+        console.error("No Provider Detected");
+        return;
+      }
+
       setProvider(new ethers.providers.Web3Provider(injected, "any"));
     };
 

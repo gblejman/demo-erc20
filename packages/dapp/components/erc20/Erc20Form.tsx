@@ -22,7 +22,7 @@ const schema = yup
 const defaultValues = {
   address: "",
   value: 0,
-};
+} as const;
 
 const styles = {
   error: { border: "1px solid red" },
@@ -43,8 +43,6 @@ export const Erc20Form = () => {
   });
 
   const onSubmit = async (data) => {
-    // console.log("onSubmit", data);
-    // return;
     if (!provider) return;
 
     try {
@@ -59,6 +57,7 @@ export const Erc20Form = () => {
       setReceipt(receipt);
     } catch (e: any) {
       console.log("Tx error: ", e.message);
+      // @ts-ignore
       setError("custom", { type: "custom", message: e.message });
     }
   };
@@ -97,11 +96,15 @@ export const Erc20Form = () => {
           <span>{errors.value?.message}</span>
         </fieldset>
 
-        {errors.custom && (
-          <p style={styles.error}>
-            <span>{errors.custom?.message}</span>
-          </p>
-        )}
+        {
+          // @ts-ignore
+          errors.custom && (
+            <p style={styles.error}>
+              {/* @ts-ignore */}
+              <span>{errors.custom?.message}</span>
+            </p>
+          )
+        }
 
         <input
           type="submit"

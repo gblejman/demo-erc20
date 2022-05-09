@@ -14,7 +14,6 @@ export const Erc20FaucetForm = () => {
   const [receipt, setReceipt] = useState<ethers.ContractReceipt | null>(null);
 
   const {
-    register,
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
